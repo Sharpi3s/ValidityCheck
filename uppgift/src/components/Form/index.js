@@ -91,8 +91,18 @@ function Form(props) {
 
   const inputIsValid = () => {
     console.log(input);
+
     if(input !== "") {
       let cleanString = input.replace(/\D/g, "");
+      if(input.length <= 9 || input.length > 12){
+        setValidation({
+          SSN: false,
+          samordningsnr: false,
+          orgnr: false
+        });
+        setError("Numret du angett är inte ett giltigt personnummer, samordningsnummer eller organisationsnummer");
+        console.log('Inget personnr, samordningsnr eller orgnr hittas');
+      }
       if(input.match(RegexSSN)) {
         if(cleanString.length === 12) {
           isValid(cleanString.slice(2, 12));
@@ -115,7 +125,7 @@ function Form(props) {
           setValidation({
             SSN: false,
             samordningsnr: false,
-            orgnr: true
+            orgnr: false
           });
           setError("Numret du angett är inte ett giltigt personnummer, samordningsnummer eller organisationsnummer");
           console.log('Inget personnr, samordningsnr eller orgnr hittas');
