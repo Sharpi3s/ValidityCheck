@@ -132,6 +132,15 @@ function Form(props) {
         }
       }
     }
+    else {
+      setValidation({
+        SSN: false,
+        samordningsnr: false,
+        orgnr: false
+      });
+      setError("Fyll i 10-12 siffror och försök igen");
+      console.log('Inget personnr, samordningsnr eller orgnr hittas');
+    }
   }
 
 
